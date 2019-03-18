@@ -61,7 +61,7 @@ pipeline{
     echo 'Pushing docker Image.'
     sh '''
         set +x
-         docker login -u yashdvs -p Qazxcdews159 -e yaswanth.dvs@gmail.com
+         docker login -u yashdvs -p puja@1989 -e abhishek99868@gmail.com
          docker push yashdvs/vlocity-build
         set -x
     '''
