@@ -14,13 +14,6 @@ node {
 
       }
 
- stage('test image') {
- 
-       app.inside {
-           echo "Test passed"
-         }
-       }
-
  stage('Push image') {
          /*
              You would to first register with Dockerhub before you can push images to your account
