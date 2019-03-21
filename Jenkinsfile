@@ -41,7 +41,6 @@ node {
 		}
 		}
 stage('Create_Docker') {
-    steps{
     echo 'This job creates docker.'
     sh '''
 set +x
@@ -63,4 +62,3 @@ set -x
 '''
           }
           }
-		  
