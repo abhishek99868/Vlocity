@@ -42,7 +42,7 @@ node('docker') {
           }
           }
 
-         echo "Trying to push Docker Build to DockerHub"
+         echo "The docker image is running now"
                      }
                      }
  }
