@@ -30,4 +30,15 @@ node {
 
          echo "Trying to push Docker Build to DockerHub"
        }
- } 
+ stage('Pull image') {
+
+        docker.withRegistry('https://registry.hub.docker.com', 'docker-hub') {
+
+        def customImage = docker.build("abhishek99868/puji:${env.BUILD_ID}")
+
+        /* Push the container to the custom Registry */
+        customImage.pull()
+		      customImage.run()
+          }
+          }
+    }
