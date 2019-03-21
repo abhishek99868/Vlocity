@@ -47,7 +47,7 @@ cat << EOF > compose_vlocity_tool.yml
 vlocity_build_tool:
   container_name:vlocity-build-tool
   restart:always
-  def customImage = docker.build("abhishek99868/puji:${env.BUILD_ID}")
+  image = docker.build("abhishek99868/puji:${env.BUILD_ID}")
   net: local_network
   privileged:true
   environment:
