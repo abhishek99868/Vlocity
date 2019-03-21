@@ -61,7 +61,6 @@ EOF
 docker-compose -f compose_vlocity_tool.yml up -d
 set -x
 '''
-		 }
           }
           }
 		  
