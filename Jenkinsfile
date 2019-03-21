@@ -34,7 +34,7 @@ node('docker') {
         docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-creds') {
 
         def customImage = docker.build("yashdvs/vlocity:${env.BUILD_ID}")
-        /* Push the container to the custom Registry */
+        /* Pull the docker image from the custom Registry */
         
         customImage.pull()
         stage('Docker Run') {
