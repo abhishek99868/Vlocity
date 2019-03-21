@@ -44,7 +44,7 @@ cat << EOF > compose_vlocity_tool.yml
 vlocity_build_tool:
   container_name: vlocity-build-tool
   restart: always
-  image: abhishek99868/puji:latest
+  image: customImage
   net: local_network
   privileged: true
   environment:
