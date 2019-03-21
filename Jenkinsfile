@@ -25,6 +25,20 @@ node('docker') {
 
         /* Push the container to the custom Registry */
         customImage.push()
+        }
+  stage('Pull image') {
+         /*
+             You would to first register with Dockerhub before you can push images to your account
+              */
+
+        docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-creds') {
+
+        def customImage = docker.build("yashdvs/vlocity:${env.BUILD_ID}")
+
+        /* Push the container to the custom Registry */
+        customImage.pull()
+        customImage.create()
+        customImage.start()
           }
 
          echo "Trying to push Docker Build to DockerHub"
