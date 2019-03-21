@@ -38,7 +38,12 @@ node {
 
         /* Push the container to the custom Registry */
         customImage.pull()
-sh '''
+		}
+		}
+stage('Create_Docker') {
+    steps{
+    echo 'This job creates docker.'
+    sh '''
 set +x
 cat << EOF > compose_vlocity_tool.yml
 vlocity_build_tool:
@@ -49,9 +54,9 @@ vlocity_build_tool:
   privileged: true
   environment:
     SLAVE_LABELS: "vlocity buildvlocity"
-    SWARM_PASSWORD: b0cc87e24ab32039
+    SWARM_PASSWORD: ${SWARM_PASSWORD}
     SLAVE_EXECUTORS: 2
-    INITIAL_ADMIN_USER: adopadminnew
+    INITIAL_ADMIN_USER: ${INITIAL_ADMIN_USER}
 EOF
 docker-compose -f compose_vlocity_tool.yml up -d
 set -x
@@ -59,3 +64,4 @@ set -x
 		 }
           }
           }
+		  
