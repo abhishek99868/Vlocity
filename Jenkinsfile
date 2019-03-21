@@ -38,9 +38,24 @@ node {
 
         /* Push the container to the custom Registry */
         customImage.pull()
-		 stage('Run Docker') {
-		      customImage.run()
+sh '''
+set +x
+cat << EOF > compose_vlocity_tool.yml
+vlocity_build_tool:
+  container_name: vlocity-build-tool
+  restart: always
+  image: abhishek99868/puji-build:latest
+  net: local_network
+  privileged: true
+  environment:
+    SLAVE_LABELS: "vlocity buildvlocity"
+    SWARM_PASSWORD: b0cc87e24ab32039
+    SLAVE_EXECUTORS: 2
+    INITIAL_ADMIN_USER: adopadminnew
+EOF
+docker-compose -f compose_vlocity_tool.yml up -d
+set -x
+'''
 		 }
           }
           }
-    }
