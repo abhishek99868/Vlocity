@@ -25,8 +25,6 @@ node('docker') {
 
         /* Push the container to the custom Registry */
         customImage.push()
-        customerImage.create()
-        customerImage.start()
           }
 
          echo "Trying to push Docker Build to DockerHub"
