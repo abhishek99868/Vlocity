@@ -38,7 +38,9 @@ node {
 
         /* Push the container to the custom Registry */
         customImage.pull()
+		 stage('Run Docker') {
 		      customImage.run()
+		 }
           }
           }
     }
