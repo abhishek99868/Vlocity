@@ -1,4 +1,4 @@
-node {
+  node {
  def app
  stage('Clone repository') {
        /* Cloning the Repository to our Workspace */
@@ -17,7 +17,6 @@ node {
  stage('Push image') {
          /*
              You would to first register with Dockerhub before you can push images to your account
-
               */
 
         docker.withRegistry('https://registry.hub.docker.com', 'docker-hub') {
@@ -46,16 +45,16 @@ stage('Create_Docker') {
 set +x
 cat << EOF > compose_vlocity_tool.yml
 vlocity_build_tool:
-  container_name: vlocity-build-tool
-  restart: always
+  container_name:vlocity-build-tool
+  restart:always
   def customImage = docker.build("abhishek99868/puji:${env.BUILD_ID}")
   net: local_network
-  privileged: true
+  privileged:true
   environment:
-    SLAVE_LABELS: "vlocity buildvlocity"
-    SWARM_PASSWORD: ${SWARM_PASSWORD}
-    SLAVE_EXECUTORS: 2
-    INITIAL_ADMIN_USER: ${INITIAL_ADMIN_USER}
+      SLAVE_LABELS:"vlocity buildvlocity"
+      SWARM_PASSWORD:${SWARM_PASSWORD}
+      SLAVE_EXECUTORS:2
+      INITIAL_ADMIN_USER:${INITIAL_ADMIN_USER}
 EOF
 docker-compose -f compose_vlocity_tool.yml up -d
 set -x
