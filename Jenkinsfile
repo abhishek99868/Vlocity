@@ -41,5 +41,6 @@ node('docker') {
           }
 
          echo "Trying to push Docker Build to DockerHub"
-       }
- } 
+                     }
+                     }
+ }
